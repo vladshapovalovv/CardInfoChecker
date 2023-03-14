@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Card Info Checker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_enter_six_digits">( ! ) To see card details enter at least first six digits</string>
+    <string name="hint_card_number_instance">1234 5678 9012 3456</string>
+    <string name="hint_cardholer_instance">VlADISLAV SHAPOVALOV</string>
+    <string name="hint_expiry_month">MM</string>
+    <string name="hint_expiry_year">YY</string>
+    <string name="hint_enter_card_number">Enter the first digits of a card number (BIN/IIN)</string>
+    <string name="card_scheme">Scheme / network</string>
+    <string name="card_show_on_map"><u>Show on map</u></string>
+</resources>
