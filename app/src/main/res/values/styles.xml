@@ -17,7 +17,6 @@
     </style>
 
     <style name="card_field_text_secondary">
-
         <item name="android:layout_marginStart">@dimen/card_field_text_size</item>
         <item name="android:paddingBottom">@dimen/card_text_padding</item>
         <item name="android:textSize">@dimen/card_field_text_size</item>

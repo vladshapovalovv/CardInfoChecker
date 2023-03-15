@@ -10,36 +10,75 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/CardBinInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:hint="@string/hint_enter_card_number"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:placeholderText="4571 7360">
-
-            <com.google.android.material.textfield.TextInputEditText
+            app:layout_constraintTop_toTopOf="parent">
+            <!--app:placeholderText="4571 7360"-->
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/cardInfoEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="20" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:id="@+id/inputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/firstColumnLinearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/CardBinInputLayout">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clearInputButton"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Clear input"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                app:cornerRadius="12dp"
+                app:icon="@drawable/ic_clear_24"
+                app:iconTint="@color/button_red" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/searchButton"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Search by BIN"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                app:cornerRadius="12dp"
+                app:icon="@drawable/ic_search_24" />
+        </LinearLayout>
+
 
         <LinearLayout
+            android:layout_marginTop="8dp"
             android:id="@+id/firstColumnLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/CardBinInputLayout">
+            app:layout_constraintTop_toBottomOf="@id/inputLayout">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -55,6 +94,7 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textview.MaterialTextView
+
                         android:id="@+id/schemeTitle"
                         style="@style/card_header_text"
                         android:layout_width="match_parent"
@@ -341,6 +381,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/urlField"
                     style="@style/card_field_text_secondary"
+                    android:autoLink="web"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_link_24"
@@ -349,6 +390,8 @@
                     app:layout_constraintTop_toBottomOf="@id/bankField" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:layout_marginTop="4dp"
+                    android:autoLink="phone"
                     android:id="@+id/phoneNumberField"
                     style="@style/card_field_text_secondary"
                     android:layout_width="match_parent"

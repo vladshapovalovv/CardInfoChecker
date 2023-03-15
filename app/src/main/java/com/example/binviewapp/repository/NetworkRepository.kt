@@ -3,7 +3,7 @@ package com.example.binviewapp.repository
 import com.example.binviewapp.network.NetworkLayer
 import com.example.binviewapp.network.response.GetCardInfoByBinResponse
 
-class Repository {
+class NetworkRepository {
 
     suspend fun getCardInfoByBin(cardBin: Int): GetCardInfoByBinResponse? {
         val request = NetworkLayer.apiClient.getCardInfoByBin(cardBin)

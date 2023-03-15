@@ -21,4 +21,7 @@
     <string name="card_field_negative">No</string>
     <string name="card_field_start_currency">\<C></C>Currency: \</string>
     <string name="text_loading_state">...</string>
+    <string name="default_request">45717360</string>
+    <string name="location_unknown">\?</string>
+    <string name="no_map_error">There is no application to open maps on your device</string>
 </resources>
