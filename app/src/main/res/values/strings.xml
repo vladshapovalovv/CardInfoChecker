@@ -10,4 +10,14 @@
     <string name="hint_enter_card_number">Enter the first digits of a card number (BIN/IIN)</string>
     <string name="card_scheme">Scheme / network</string>
     <string name="card_show_on_map"><u>Show on map</u></string>
+    <string name="card_title_brand">Brand</string>
+    <string name="card_title_prepaid">Prepaid</string>
+    <string name="card_title_type">Type</string>
+    <string name="card_title_number_length">Card number length</string>
+    <string name="card_title_luhn">LUHN</string>
+    <string name="card_title_country">Country</string>
+    <string name="card_title_bank">Bank</string>
+    <string name="card_field_positive">Yes</string>
+    <string name="card_field_negative">No</string>
+    <string name="card_field_start_currency">\<C></C>Currency: \</string>
 </resources>

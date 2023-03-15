@@ -43,19 +43,25 @@ android {
 dependencies {
 
     //Retrofit
-    def retrofitVersion = "2.9.0"
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
 
     //OkHttp
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    
+    //ViewModel + Coroutines
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
 
     //Moshi
-    def moshiVersion = "5.1.1"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
-    implementation "com.squareup.moshi:moshi:$moshiVersion"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:1.14.0"
+    implementation 'com.squareup.moshi:moshi:1.14.0'
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.14.0"
+
+    //Epoxy
+    def epoxyVersion = "5.1.1"
+    implementation "com.airbnb.android:epoxy:$epoxyVersion"
+    annotationProcessor "com.airbnb.android:epoxy-processor:$epoxyVersion"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

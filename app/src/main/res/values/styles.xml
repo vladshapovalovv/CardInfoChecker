@@ -2,16 +2,13 @@
 <resources>
 
     <style name="card_header_text">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/app_default_margin</item>
         <item name="android:layout_marginTop">@dimen/text_top_margin</item>
         <item name="android:textSize">@dimen/card_header_text_size</item>
     </style>
 
     <style name="card_field_text">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+
         <item name="android:layout_marginStart">@dimen/card_field_text_size</item>
         <item name="android:layout_marginTop">@dimen/card_end_margin</item>
         <item name="android:paddingBottom">@dimen/card_text_padding</item>
@@ -20,10 +17,10 @@
     </style>
 
     <style name="card_field_text_secondary">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+
         <item name="android:layout_marginStart">@dimen/card_field_text_size</item>
         <item name="android:paddingBottom">@dimen/card_text_padding</item>
         <item name="android:textSize">@dimen/card_field_text_size</item>
     </style>
+
 </resources>

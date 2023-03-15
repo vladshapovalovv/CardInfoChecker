@@ -1,6 +1,6 @@
 package com.example.binviewapp
 
-data class GetCardInfoByBin(
+data class GetCardInfoByBinResponse(
     val bank: Bank = Bank(),
     val brand: String = "",
     val country: Country = Country(),

@@ -1,324 +1,363 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:clipChildren="false">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/CardBinInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/hint_enter_card_number"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/CardInfoEditText"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/CardBinInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/hint_enter_card_number"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:placeholderText="4571 7360">
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <LinearLayout
-        android:id="@+id/firstColumnLinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/CardBinInputLayout">
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/app_default_margin"
-            android:layout_marginEnd="@dimen/card_end_margin"
-            android:layout_weight="1"
-            android:elevation="@dimen/card_elevation"
-            app:cardCornerRadius="@dimen/app_default_corner_radius">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cardInfoEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:inputType="number" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/schemeTitle"
-                    style="@style/card_header_text"
-                    android:text="@string/card_scheme"
-                    app:layout_constraintTop_toTopOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/schemeField"
-                    style="@style/card_field_text"
-                    app:layout_constraintTop_toBottomOf="@id/schemeTitle"
-                    tools:text="Visa" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
+            android:id="@+id/firstColumnLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/CardBinInputLayout">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_default_margin"
+                android:layout_marginEnd="@dimen/card_end_margin"
+                android:layout_weight="1"
+                android:elevation="@dimen/card_elevation"
+                app:cardCornerRadius="@dimen/app_default_corner_radius">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/schemeTitle"
+                        style="@style/card_header_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_scheme"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/schemeField"
+                        style="@style/card_field_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Visa"
+                        app:layout_constraintTop_toBottomOf="@id/schemeTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:elevation="12dp"
+                app:cardCornerRadius="12dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/cardTypeTextView"
+                        style="@style/card_header_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_title_type"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/cardTypeField"
+                        style="@style/card_field_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Debit"
+                        app:layout_constraintTop_toBottomOf="@id/cardTypeTextView" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondColumnLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/firstColumnLinearLayout">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_default_margin"
+                android:layout_marginEnd="@dimen/card_end_margin"
+                android:layout_weight="1"
+                android:elevation="@dimen/card_elevation"
+                app:cardCornerRadius="@dimen/app_default_corner_radius">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/brandTitle"
+                        style="@style/card_header_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_title_brand"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/brandField"
+                        style="@style/card_field_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Visa/Dankort"
+                        app:layout_constraintTop_toBottomOf="@id/brandTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:elevation="12dp"
+                app:cardCornerRadius="12dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/prepaidTitle"
+                        style="@style/card_header_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_title_prepaid"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/prepaidField"
+                        style="@style/card_field_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="No"
+                        app:layout_constraintTop_toBottomOf="@id/prepaidTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdColumnLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/secondColumnLinearLayout">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/app_default_margin"
+                android:layout_marginEnd="@dimen/card_end_margin"
+                android:layout_weight="1"
+                android:elevation="@dimen/card_elevation"
+                app:cardCornerRadius="@dimen/app_default_corner_radius">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/lengthTitle"
+                        style="@style/card_header_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_title_number_length"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/lengthField"
+                        style="@style/card_field_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="16"
+                        app:layout_constraintTop_toBottomOf="@id/lengthTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:elevation="12dp"
+                app:cardCornerRadius="12dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/LUHNTitle"
+                        style="@style/card_header_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_title_luhn"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/LUHNField"
+                        style="@style/card_field_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Yes"
+                        app:layout_constraintTop_toBottomOf="@id/LUHNTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/countryInfoCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_weight="1"
-            android:elevation="12dp"
-            app:cardCornerRadius="12dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/cardTypeTextView"
-                    style="@style/card_header_text"
-                    android:text="Type"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/cardTypeField"
-                    style="@style/card_field_text"
-                    app:layout_constraintTop_toBottomOf="@id/cardTypeTextView"
-                    tools:text="Debit" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/secondColumnLinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/firstColumnLinearLayout">
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/app_default_margin"
-            android:layout_marginEnd="@dimen/card_end_margin"
-            android:layout_weight="1"
-            android:elevation="@dimen/card_elevation"
-            app:cardCornerRadius="@dimen/app_default_corner_radius">
+            app:cardCornerRadius="@dimen/app_default_corner_radius"
+            app:layout_constraintTop_toBottomOf="@id/thirdColumnLinearLayout">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/brandTitle"
+                    android:id="@+id/countryTitle"
                     style="@style/card_header_text"
-                    android:text="Brand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/card_title_country"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/brandField"
+                    android:id="@+id/countryField"
                     style="@style/card_field_text"
-                    app:layout_constraintTop_toBottomOf="@id/brandTitle"
-                    tools:text="Visa/Dankort" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Denmark"
+                    app:layout_constraintTop_toBottomOf="@id/countryTitle" />
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/countryCurrencyField"
+                    style="@style/card_field_text_secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="DKK"
+                    app:layout_constraintTop_toBottomOf="@id/countryField" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/countryCoordinatesField"
+                    style="@style/card_field_text_secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_location_24"
+                    android:drawablePadding="5dp"
+                    android:text="@string/card_show_on_map"
+                    app:layout_constraintTop_toBottomOf="@id/countryCurrencyField" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/bankInfoCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_weight="1"
-            android:elevation="12dp"
-            app:cardCornerRadius="12dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/prepaidTitle"
-                    style="@style/card_header_text"
-                    android:text="Prepaid"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/prepaidField"
-                    style="@style/card_field_text"
-                    app:layout_constraintTop_toBottomOf="@id/prepaidTitle"
-                    tools:text="No" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/thirdColumnLinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/secondColumnLinearLayout">
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/app_default_margin"
-            android:layout_marginEnd="@dimen/card_end_margin"
-            android:layout_weight="1"
-            android:elevation="@dimen/card_elevation"
-            app:cardCornerRadius="@dimen/app_default_corner_radius">
+            app:cardCornerRadius="@dimen/app_default_corner_radius"
+            app:layout_constraintTop_toBottomOf="@id/countryInfoCardView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/lengthTitle"
+                    android:id="@+id/bankTitle"
                     style="@style/card_header_text"
-                    android:text="Card number length "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/card_title_bank"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/lengthField"
+                    android:id="@+id/bankField"
                     style="@style/card_field_text"
-                    app:layout_constraintTop_toBottomOf="@id/lengthTitle"
-                    tools:text="16" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="16dp"
-            android:layout_weight="1"
-            android:elevation="12dp"
-            app:cardCornerRadius="12dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Jyske Bank"
+                    app:layout_constraintTop_toBottomOf="@id/bankTitle" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/LUHNTitle"
-                    style="@style/card_header_text"
-                    android:text="LUHN"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id="@+id/urlField"
+                    style="@style/card_field_text_secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_link_24"
+                    android:drawablePadding="5dp"
+                    tools:text="www.jyskebank.dk"
+                    app:layout_constraintTop_toBottomOf="@id/bankField" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/LUHNField"
-                    style="@style/card_field_text"
-                    app:layout_constraintTop_toBottomOf="@id/LUHNTitle"
-                    tools:text="Yes" />
+                    android:id="@+id/phoneNumberField"
+                    style="@style/card_field_text_secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_phone_24"
+                    android:drawablePadding="5dp"
+                    tools:text="+4589893300"
+                    app:layout_constraintTop_toBottomOf="@id/urlField" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/countryInfoCardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="@dimen/app_default_corner_radius"
-        app:layout_constraintTop_toBottomOf="@id/thirdColumnLinearLayout">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/countryTitle"
-                style="@style/card_header_text"
-                android:text="Country"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/countryField"
-                style="@style/card_field_text"
-                app:layout_constraintTop_toBottomOf="@id/countryTitle"
-                tools:text="Denmark" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/countryCurrencyField"
-                style="@style/card_field_text_secondary"
-                app:layout_constraintTop_toBottomOf="@id/countryField"
-                tools:text="DKK" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/countryCoordinatesField"
-                style="@style/card_field_text_secondary"
-                android:drawableLeft="@drawable/ic_location_24"
-                android:drawablePadding="5dp"
-                android:text="@string/card_show_on_map"
-                app:layout_constraintTop_toBottomOf="@id/countryCurrencyField" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bankInfoCardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="@dimen/app_default_corner_radius"
-        app:layout_constraintTop_toBottomOf="@id/countryInfoCardView">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/bankTitle"
-                style="@style/card_header_text"
-                android:text="Bank"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/bankField"
-                style="@style/card_field_text"
-                app:layout_constraintTop_toBottomOf="@id/bankTitle"
-                tools:text="Jyske Bank" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/urlField"
-                style="@style/card_field_text_secondary"
-                app:layout_constraintTop_toBottomOf="@id/bankField"
-                tools:text="www.jyskebank.dk" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/phoneNumberField"
-                style="@style/card_field_text_secondary"
-                android:drawableLeft="@drawable/ic_phone_24"
-                android:drawablePadding="5dp"
-                app:layout_constraintTop_toBottomOf="@id/urlField"
-                tools:text="+4589893300" />
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </com.google.android.material.card.MaterialCardView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

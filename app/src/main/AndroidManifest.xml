@@ -12,7 +12,7 @@
         android:theme="@style/Theme.BinViewApp"
         tools:targetApi="31">
         <activity
-            android:name=".CardInfoActivity"
+            android:name=".ui.CardInfoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
