@@ -1,5 +1,6 @@
-package com.example.binviewapp
+package com.example.binviewapp.network
 
+import com.example.binviewapp.network.response.GetCardInfoByBinResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

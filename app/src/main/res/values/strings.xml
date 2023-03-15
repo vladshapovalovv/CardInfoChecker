@@ -20,4 +20,5 @@
     <string name="card_field_positive">Yes</string>
     <string name="card_field_negative">No</string>
     <string name="card_field_start_currency">\<C></C>Currency: \</string>
+    <string name="text_loading_state">...</string>
 </resources>

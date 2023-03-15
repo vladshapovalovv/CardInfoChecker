@@ -1,17 +1,21 @@
 package com.example.binviewapp.repository
 
-import com.example.binviewapp.GetCardInfoByBinResponse
-import com.example.binviewapp.NetworkLayer
+import com.example.binviewapp.network.NetworkLayer
+import com.example.binviewapp.network.response.GetCardInfoByBinResponse
 
 class Repository {
 
     suspend fun getCardInfoByBin(cardBin: Int): GetCardInfoByBinResponse? {
         val request = NetworkLayer.apiClient.getCardInfoByBin(cardBin)
 
-        if(request.isSuccessful){
-            return request.body()!!
+        if (request.failed) {
+            return null
         }
-        return null
+
+        if (!request.isSuccessful) {
+            return null
+        }
+        return request.body
     }
 
 }
