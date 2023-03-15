@@ -10,36 +10,68 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/CardBinInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        <LinearLayout
+            android:id="@+id/inputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:hint="@string/hint_enter_card_number"
-            app:errorEnabled="true"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/firstColumnLinearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:placeholderText="4571 7360">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cardInfoEditText"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/CardBinInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="@string/hint_enter_card_number"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toStartOf="@id/searchButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:placeholderText="4571 7360">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/cardInfoEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/searchButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="4"
+                android:elevation="@dimen/card_elevation"
+                app:cardCornerRadius="12dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_search_24"
+                    android:theme="@style/imageViewTint" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
 
 
         <LinearLayout
+            android:layout_marginTop="8dp"
             android:id="@+id/firstColumnLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/CardBinInputLayout">
+            app:layout_constraintTop_toBottomOf="@id/inputLayout">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -55,6 +87,7 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textview.MaterialTextView
+
                         android:id="@+id/schemeTitle"
                         style="@style/card_header_text"
                         android:layout_width="match_parent"

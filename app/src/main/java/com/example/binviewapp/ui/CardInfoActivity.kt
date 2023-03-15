@@ -1,8 +1,10 @@
 package com.example.binviewapp.ui
 
+import android.app.Activity
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.example.binviewapp.R
@@ -16,26 +18,39 @@ class CardInfoActivity : AppCompatActivity() {
     private val viewModel: ViewModel by lazy {
         ViewModelProvider(this)[ViewModel::class.java]
     }
-    private var currentCardBin = 483312
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = CardInfoActivityBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         processUserInput()
-        initFieldsViaLiveData(currentCardBin)
+        initFieldsViaLiveData(getString(R.string.default_request).toInt())
 
+        binding.searchButton.setOnClickListener {
+            if(binding.cardInfoEditText.text.isNullOrBlank()){
+                binding.CardBinInputLayout.error = "This field can't empty!"
+                return@setOnClickListener
+            }
+            initFieldsViaLiveData(binding.cardInfoEditText
+                .text.toString()
+                .filterNot { it.isWhitespace() }
+                .toInt())
+        }
+        hideKeyboard(binding.root)
     }
 
     private fun initFieldsViaLiveData(cardBin: Int) {
+
         viewModel.refreshCardInfo(cardBin)
 
         viewModel.cardInfoByLiveData.observe(this) { response ->
             if (response == null) {
                 binding.CardBinInputLayout.error = "Wrong card number"
+                setAllFieldsLoadingState()
                 return@observe
             }
             with(binding) {
+                binding.CardBinInputLayout.error = null
                 schemeField.text = response.scheme
                 cardTypeField.text = response.type
                 brandField.text = response.brand
@@ -98,14 +113,21 @@ class CardInfoActivity : AppCompatActivity() {
                 binding.cardInfoEditText.setSelection(binding.cardInfoEditText.length())
             }
         }
-        binding.cardInfoEditText.addTextChangedListener {
-            var followingString = binding.cardInfoEditText.text.toString().replace(" ","")
+
+        /*        binding.cardInfoEditText.addTextChangedListener {
+            val followingString = binding.cardInfoEditText.text.toString().filterNot { it.isWhitespace() }
             if (followingString.length >= 5) {
-                initFieldsViaLiveData(followingString.toInt())
+                binding.searchButton.strokeColor = resources.getColor(R.color.purple_200)
+                binding.searchButton.strokeWidth = 4
                 return@addTextChangedListener
             }
-        }
-
+        }*/
     }
+
+    private fun hideKeyboard(view: View){
+        val imm: InputMethodManager = application.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 
 }
