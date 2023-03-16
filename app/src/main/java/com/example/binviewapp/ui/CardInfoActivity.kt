@@ -60,16 +60,20 @@ class CardInfoActivity : AppCompatActivity() {
 
 
         binding.searchButton.setOnClickListener {
-            val userInput = binding.cardInfoEditText.text.substring(0..7)
+
+            val userInput = binding.cardInfoEditText.text
+
             if (userInput.isNullOrBlank()) {
                 binding.CardBinInputLayout.error = "This field can't empty!"
                 return@setOnClickListener
             }
+
             val binEntity = BinEntity(
                 id = UUID.randomUUID().toString(),
                 bin = userInput.toString()
             )
             databaseViewModel.insertItem(binEntity)
+
             initFieldsViaLiveData(userInput
                 .toString()
                 .filterNot { it.isWhitespace() }

@@ -19,16 +19,17 @@
             android:layout_marginTop="16dp"
             android:hint="@string/hint_enter_card_number"
             app:errorEnabled="true"
+            app:placeholderText="4571 7360"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-            <!--app:placeholderText="4571 7360"-->
+
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/cardInfoEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:maxLength="20" />
+                android:maxLength="9" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -339,11 +340,12 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/countryCoordinatesField"
                     style="@style/card_field_text_secondary"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_location_24"
                     android:drawablePadding="5dp"
                     android:text="@string/card_show_on_map"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/countryCurrencyField" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -381,25 +383,27 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/urlField"
                     style="@style/card_field_text_secondary"
-                    android:autoLink="web"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:autoLink="web"
                     android:drawableStart="@drawable/ic_link_24"
-                    android:drawablePadding="5dp"
-                    tools:text="www.jyskebank.dk"
-                    app:layout_constraintTop_toBottomOf="@id/bankField" />
+                    android:drawablePadding="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/bankField"
+                    tools:text="www.jyskebank.dk" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:layout_marginTop="4dp"
-                    android:autoLink="phone"
                     android:id="@+id/phoneNumberField"
                     style="@style/card_field_text_secondary"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:autoLink="phone"
                     android:drawableStart="@drawable/ic_phone_24"
-                    android:drawablePadding="5dp"
-                    tools:text="+4589893300"
-                    app:layout_constraintTop_toBottomOf="@id/urlField" />
+                    android:drawablePadding="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/urlField"
+                    tools:text="+4589893300" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
