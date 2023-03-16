@@ -12,7 +12,7 @@ class DatabaseViewModel: ViewModel() {
 
     private lateinit var repository: DataBaseRepository
 
-    val itemEntitiesLiveData = MutableLiveData<List<BinEntity>>()
+    val binEntitiesLiveData = MutableLiveData<List<BinEntity>>()
 
     val transactionCompleteLiveData = MutableLiveData<Boolean>()
 
@@ -21,7 +21,7 @@ class DatabaseViewModel: ViewModel() {
 
         viewModelScope.launch {
             val items = repository.getAllItems().collect { items ->
-                itemEntitiesLiveData.postValue(items)
+                binEntitiesLiveData.postValue(items)
             }
         }
     }

@@ -4,22 +4,27 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.example.binviewapp.R
 import com.example.binviewapp.databinding.CardInfoActivityBinding
+import com.example.binviewapp.storage.AppDatabase
 import com.example.binviewapp.storage.entity.BinEntity
 import com.example.binviewapp.viewmodel.DatabaseViewModel
 import com.example.binviewapp.viewmodel.NetworkViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import java.util.*
 
 class CardInfoActivity : AppCompatActivity() {
 
     private lateinit var binding: CardInfoActivityBinding
+
     private val networkViewModel: NetworkViewModel by lazy {
         ViewModelProvider(this)[NetworkViewModel::class.java]
     }
@@ -31,30 +36,51 @@ class CardInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = CardInfoActivityBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
+        databaseViewModel.init(AppDatabase.getDatabase(this))
+
         processUserInput()
         initFieldsViaLiveData(getString(R.string.default_request).toInt())
+        validateUserInput()
+
+        binding.clearInputButton.setOnClickListener {
+            binding.cardInfoEditText.text.clear()
+        }
+
+        binding.cardInfoEditText.imeOptions = EditorInfo.IME_ACTION_DONE
+
+        onKeyboardDoneClick(binding.cardInfoEditText)
+    }
+
+    private fun validateUserInput() {
+        var binHistoryList = ArrayList<String>()
+
+        databaseViewModel.binEntitiesLiveData.observe(this) { binEntityList ->
+            createHistoryAdapter(binEntityList.map { it.bin } as ArrayList<String>)
+        }
+
 
         binding.searchButton.setOnClickListener {
             val userInput = binding.cardInfoEditText.text
             if (userInput.isNullOrBlank()) {
                 binding.CardBinInputLayout.error = "This field can't empty!"
-                val binEntity = BinEntity(
-                    id = UUID.randomUUID().toString(),
-                    bin = userInput.toString()
-                )
-                databaseViewModel.insertItem(binEntity)
                 return@setOnClickListener
             }
+            val binEntity = BinEntity(
+                id = UUID.randomUUID().toString(),
+                bin = userInput.toString()
+            )
+            databaseViewModel.insertItem(binEntity)
             initFieldsViaLiveData(userInput
                 .toString()
                 .filterNot { it.isWhitespace() }
                 .toInt())
-            hideKeyboard(binding.root)
+                hideKeyboard()
         }
+    }
 
-        binding.clearInputButton.setOnClickListener {
-            binding.cardInfoEditText.text.clear()
-        }
+    private fun createHistoryAdapter(binList: ArrayList<String>) {
+        val adapter = ArrayAdapter(this, R.layout.dropdown_history, binList)
+        binding.cardInfoEditText.setAdapter(adapter)
     }
 
     private fun initFieldsViaLiveData(cardBin: Int) {
@@ -144,24 +170,15 @@ class CardInfoActivity : AppCompatActivity() {
             }
         }
 
-        /*        binding.cardInfoEditText.addTextChangedListener {
-            val followingString = binding.cardInfoEditText.text.toString().filterNot { it.isWhitespace() }
-            if (followingString.length >= 5) {
-                binding.searchButton.strokeColor = resources.getColor(R.color.purple_200)
-                binding.searchButton.strokeWidth = 4
-                return@addTextChangedListener
-            }
-        }*/
     }
 
-
-    private fun hideKeyboard(view: View) {
+    private fun hideKeyboard() {
         val imm: InputMethodManager =
             application.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
+        imm.hideSoftInputFromWindow(binding.cardInfoEditText.windowToken, 0)
     }
 
-    fun sendLocationIntent(latitude: Int, longitude: Int) {
+    private fun sendLocationIntent(latitude: Int, longitude: Int) {
         try {
             val intentUri = Uri.parse("geo:$latitude,$longitude")
             val mapIntent = Intent(Intent.ACTION_VIEW, intentUri)
@@ -174,5 +191,15 @@ class CardInfoActivity : AppCompatActivity() {
         }
     }
 
+    private fun onKeyboardDoneClick(search: MaterialAutoCompleteTextView){
+        search.setOnEditorActionListener(TextView.OnEditorActionListener{ _, actionId, _ ->
+
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                hideKeyboard()
+                return@OnEditorActionListener true
+            }
+            false
+        })
+    }
 
 }

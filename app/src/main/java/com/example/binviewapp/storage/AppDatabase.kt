@@ -19,7 +19,7 @@ abstract class AppDatabase: RoomDatabase() {
             if(appDatabase != null){
                 return appDatabase!!
             }
-            appDatabase = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "shopping-notes-database").build()
+            appDatabase = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "bin-view-database").build()
             return appDatabase!!
         }
     }

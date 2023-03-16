@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface BinEntityDao  {
 
-    @Query("SELECT * FROM item_entity")
+    @Query("SELECT * FROM bin_entity")
     fun getAllItemEntities(): Flow<List<BinEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
