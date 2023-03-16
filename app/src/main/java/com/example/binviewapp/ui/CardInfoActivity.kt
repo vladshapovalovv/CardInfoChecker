@@ -60,7 +60,7 @@ class CardInfoActivity : AppCompatActivity() {
 
 
         binding.searchButton.setOnClickListener {
-            val userInput = binding.cardInfoEditText.text
+            val userInput = binding.cardInfoEditText.text.substring(0..7)
             if (userInput.isNullOrBlank()) {
                 binding.CardBinInputLayout.error = "This field can't empty!"
                 return@setOnClickListener
